@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: spending-manager
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+  datasource:
+    url: jdbc:oracle:thin:@//${ORACLEDB_HOST:192.168.198.2}:${ORACLEDB_PORT:1521}/${ORACLEDB_SERVICENAME:xe.localdomain}
+    username: ${ORACLEDB_USERNAME:SPENDING_MANAGER}
+    password: ${ORACLEDB_PASSWORD:SPENDING_MANAGER}
+    driver-class-name: oracle.jdbc.OracleDriver
+    hikari:
+      connection-test-query: SELECT 1 FROM DUAL
+      minimum-idle: 10
+      maximum-pool-size: 20
+      auto-commit: false
+  jpa:
+    show-sql: true
+    open-in-view: false
+    database-platform: org.hibernate.dialect.Oracle12cDialect
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+        connection:
+          provider_disables_autocommit: true
+  cloud:
+    config:
+      enabled: false
+      import-check:
+        enabled: false
+  webflux:
+    hiddenmethod:
+      filter:
+        enabled: false
