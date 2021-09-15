@@ -24,11 +24,6 @@ spring:
           use_jdbc_metadata_defaults: false
         connection:
           provider_disables_autocommit: true
-  cloud:
-    config:
-      enabled: false
-      import-check:
-        enabled: false
   webflux:
     hiddenmethod:
       filter:
